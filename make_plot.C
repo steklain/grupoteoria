@@ -12,12 +12,12 @@
 
 void make_plot(){
 
-   auto gr  = new TGraph("probability_DUNE_mu_e.dat"); //nome do arquivo.dat
+   auto gr  = new TGraph("probability_DUNE_mu_tau.dat"); //nome do arquivo.dat
 
     gr->GetXaxis()->SetRangeUser(0.25,10.0);
     gr->GetYaxis()->SetRangeUser(0,1);
     //gr->GetYaxis()->SetRangeUser(0,0.2);
-    gr->SetTitle("Probability mu->e");
+    gr->SetTitle("Probability mu->tau"); // titulo
     gr->GetXaxis()->CenterTitle();
     gr->GetYaxis()->CenterTitle();
     gr->GetYaxis()->SetNdivisions(505);
