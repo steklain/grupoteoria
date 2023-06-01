@@ -43,7 +43,7 @@ int main(int argc, char * argv[])
 	glbSetOscillationParameters(true_values);
 	glbSetRates();
 
-	double energy,prob_mu_mu,flux; 
+	double energy,prob_mu_mu; 
 	double emin= 0.25 ; //GeV
 	double emax=10 ; //GeV
 	double step= 3000;
