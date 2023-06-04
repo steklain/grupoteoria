@@ -12,7 +12,7 @@
 
 void novo_plot(){
 
-  auto grBSMn  = new TGraph("BSMprobability_cmueDUNEn.dat");
+  //auto grBSMn  = new TGraph("BSMprobability_cmueDUNEn.dat");
 
     auto grmumu  = new TGraph("probability_DUNE_mu_mu.dat");
     auto grmue  = new TGraph("probability_DUNE_mu_e.dat");

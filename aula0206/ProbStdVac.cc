@@ -22,9 +22,11 @@ int main(int argc, char * argv[])
 	glbInit(argv[0]);
 	glbInitExperiment(AEDLFILE, &glb_experiment_list[0], &glb_num_of_exps);
 
-	ofstream outstd_mu_mu;
+	ofstream outstd_mu_e, outstd_mu_mu, outstd_mu_tau;
 
-	outstd_mu_mu.open("probability_DUNE_mu_mu.dat");
+	outstd_mu_e.open("probability_vac_mu_e.dat");
+    outstd_mu_mu.open("probability_vac_mu_mu.dat");
+    outstd_mu_tau.open("probability_vac_mu_tau.dat");
 	
 	double dm21 = 7.55e-5;
 	double dm31 = 2.50e-3;
@@ -43,7 +45,7 @@ int main(int argc, char * argv[])
 	glbSetOscillationParameters(true_values);
 	glbSetRates();
 
-	double energy,prob_mu_mu; 
+	double energy,prob_mu_e,prob_mu_mu,prob_mu_tau; 
 	double emin= 0.25 ; //GeV
 	double emax=10 ; //GeV
 	double step= 3000;
@@ -52,12 +54,20 @@ int main(int argc, char * argv[])
 	for (energy=emin;energy<=emax;energy+=(emax-emin)/step)
 	{
 	  glbSetOscillationParameters(true_values);
-	  prob_mu_mu=glbVacuumProbability(2,2,+1,energy,L); // calcula prob de mu->mu
-	  outstd_mu_mu<<energy<<"  "<<prob_mu_mu<<endl; //imprime no arquivo: energia prob_mu_mu ; 
+	  prob_mu_e=glbVacuumProbability(2,1,+1,energy,L); // calcula prob de mu->e
+	  outstd_mu_e<<energy<<"  "<<prob_mu_e<<endl; //imprime no arquivo: energia prob_mu_e ;
+      
+      prob_mu_mu=glbVacuumProbability(2,2,+1,energy,L); 
+	  outstd_mu_mu<<energy<<"  "<<prob_mu_mu<<endl; 
+      
+      prob_mu_tau=glbVacuumProbability(2,3,+1,energy,L); 
+	  outstd_mu_tau<<energy<<"  "<<prob_mu_tau<<endl;  
 	}
 
 
-	outstd_mu_mu.close();
+	outstd_mu_e.close();
+    outstd_mu_mu.close();
+    outstd_mu_tau.close();
 	glbFreeParams(true_values);
  	return 0;
 
